@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp">
+
+<!-- Header Text -->
+<EditText
+    android:id="@+id/hostHeaderText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter Host Dashboard"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:paddingBottom="16dp" />
+
+<!-- Button to Create a New Room -->
+<Button
+    android:id="@+id/createRoomButton"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Create New Room"
+    android:layout_marginBottom="16dp" />
+
+<!-- RecyclerView to Display Created Rooms -->
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/hostRoomsRecyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:scrollbars="vertical" />
+
+</LinearLayout>
