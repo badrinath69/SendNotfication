@@ -24,5 +24,9 @@ class SelectActivity : AppCompatActivity() {
         subscriberButton.setOnClickListener {
             startActivity(Intent(this, SubscriberActivity::class.java))
         }
+        val notificationButton: Button = findViewById(R.id.notificationButton)
+        notificationButton.setOnClickListener {
+            startActivity(Intent(this, NotificationActivity::class.java))
+        }
     }
 }

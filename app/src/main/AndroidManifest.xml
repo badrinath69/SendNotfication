@@ -4,9 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SendNotification"
         tools:targetApi="31">
+        <activity
+            android:name=".epoxy.EpoxyActivity"
+            android:exported="false" />
         <activity
             android:name=".Activities.SubscriberActivity"
             android:exported="false" />
@@ -43,7 +46,6 @@
         </activity>
 
         <receiver android:name=".utils.NotificationReceiver" />
-
     </application>
 
 </manifest>

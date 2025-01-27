@@ -27,3 +27,10 @@ data class Room(
 )
 
 
+data class Creator(
+    val name: String,
+    val profession: String,
+    val imageUrl: String
+)
+
+

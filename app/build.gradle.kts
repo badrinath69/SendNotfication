@@ -3,8 +3,12 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
     id("com.google.gms.google-services")
+//    id("com.android.library")
 
 }
+
+
+
 
 android {
     namespace = "com.example.sendnotification"
@@ -30,31 +34,34 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "1.8"
     }
     viewBinding {
         enable = true
+    }
+    buildFeatures {
+        viewBinding = true // Recommended for new projects instead of ButterKnife
     }
 }
 
 dependencies {
 
+
     implementation ("com.google.firebase:firebase-bom:32.2.0")
     implementation ("com.google.code.gson:gson:2.10.1")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
-
     implementation ("com.google.firebase:firebase-messaging:24.1.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-
+    implementation ("com.airbnb.android:epoxy:5.1.4")
+    kapt ("com.airbnb.android:epoxy-processor:5.1.4")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
-
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 
     implementation(libs.androidx.core.ktx)

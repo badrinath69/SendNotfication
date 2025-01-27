@@ -4,6 +4,7 @@ package com.example.sendnotification.Activities
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -48,13 +49,33 @@ class HostActivity : AppCompatActivity() {
     private fun loadRooms() {
         db.collection("rooms")
             .whereEqualTo("hostId", hostId)
-            .addSnapshotListener { snapshot, _ ->
+            .addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    Toast.makeText(this, "Error loading rooms: ${exception.message}", Toast.LENGTH_LONG).show()
+                    return@addSnapshotListener
+                }
                 roomsList.clear()
                 snapshot?.documents?.forEach {
                     roomsList.add(it.toObject(Room::class.java)!!)
                 }
                 adapter.notifyDataSetChanged()
             }
+
+//        db.collection("rooms")
+//            .get()
+//            .addOnSuccessListener { snapshot ->
+//                roomsList.clear()
+//                snapshot.documents.forEach {
+//                    roomsList.add(it.toObject(Room::class.java)!!)
+//                }
+//                adapter.notifyDataSetChanged()
+//            }
+//            .addOnFailureListener { e ->
+//                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+//                Log.d("key","${e.message}")
+//                e.printStackTrace()
+//            }
+
     }
 
     private fun showDateTimePicker() {
